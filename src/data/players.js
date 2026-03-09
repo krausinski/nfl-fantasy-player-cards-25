@@ -219,6 +219,6 @@ const players = [
     fantasyFinishOverall: 19,
     fantasyFinishPosition: 8
   }
-]
+];
 
 export default players

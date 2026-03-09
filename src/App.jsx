@@ -6,13 +6,10 @@ import './App.css'
 import players from "./data/players"
 
 function App() {
-
-  console.log(players[1])
-  
   return (
     <div>
       <h1>🏈 NFL Fantasy Player Cards 2025</h1>
-      <p><b>Fantasy Champion 2023: see console for now</b></p>
+      <p><b>🏆 Fantasy MVP 2023:</b> {players.find(p => p.fantasyFinishOverall === 1).name}</p>
     </div>
   )
 }
