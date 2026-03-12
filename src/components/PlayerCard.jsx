@@ -1,26 +1,34 @@
+import './PlayerCard.css'
+
 const PlayerCard = ({ player }) => {
     return(
-        <div
-            style={{
-                border: "solid 2px black",
-                borderRadius: 6,
-                maxWidth: 300,
-                padding: 20,
-                backgroundColor: "#868788"
-            }}
-        >
+        <div className='card'>
+            <button className="favorite-btn">★</button>
             <img className="playerPic" src={`/players/${player.id}.png`} />
-            <h3>{player.name}</h3>
-            <p>{player.position}</p>
+            <h2>{player.name}</h2>
+            <p style={{margin: 0}}>
+                {player.position} | {player.team}
+            </p>
             
-            <img className="teamLogo" src={`https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/${player.teamShort}.png`} />
-            <p>{player.team}</p>
+            {/* <img className="teamLogo" src={`https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/${player.teamShort}.png`} /> */}
             
             <div className="stats">
-                <p>Fantasy Points: {player.fantasyPoints}</p>
-                <p>Points per Game: {player.fantasyPpg}</p>
-                <p>Rank Overall: {player.fantasyFinishOverall}</p>
-                <p>Rank Position: {player.fantasyFinishPosition}</p>
+                <div className="stat-tile">
+                    <div className="stat-value">{player.fantasyPoints}</div>
+                    <div className="stat-label">Fantasy Points</div>
+                </div>
+                <div className="stat-tile">
+                    <div className="stat-value">{player.fantasyPpg}</div>
+                    <div className="stat-label">Points per Game</div>
+                </div>
+                <div className="stat-tile">
+                    <div className="stat-value">{player.fantasyFinishOverall}</div>
+                    <div className="stat-label">Rank Overall</div>
+                </div>
+                <div className="stat-tile">
+                    <div className="stat-value">{player.fantasyFinishPosition}</div>
+                    <div className="stat-label">Rank Position</div>
+                </div>
             </div>
         </div>
     )
