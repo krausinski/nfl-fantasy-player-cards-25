@@ -1,14 +1,20 @@
 import './PlayerCard.css'
 
-const PlayerCard = ({ player }) => {
+const PlayerCard = ({ player, isFavorite, onToggleFavorite }) => {
     return(
         <div className='card'>
-            <button className="favorite-btn">★</button>
+            <button 
+                className={`fav-btn ${isFavorite ? "active" : ""}`}
+                onClick={() => onToggleFavorite(player.id)}
+            >
+                ★
+            </button>
             <img className="playerPic" src={`/players/${player.id}.png`} />
             <h2>{player.name}</h2>
             <p style={{margin: 0}}>
                 {player.position} | {player.team}
             </p>
+
             
             {/* <img className="teamLogo" src={`https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/${player.teamShort}.png`} /> */}
             

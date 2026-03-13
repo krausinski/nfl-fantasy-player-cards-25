@@ -1,6 +1,7 @@
 .card {
     background-color: #231e39;
     border-radius: 5px;
+    /* border: 2px solid rgba(255,215,0,0.4); */
     box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
     color: #b3b8cd;
     padding-top: 30px;
@@ -8,10 +9,12 @@
     width: 350px;
     max-width: 100%;
     text-align: center;
+    overflow: hidden;
 }
 
 .card h2 {
     margin: 2px 0px;
+    font-size: 1.8rem;
 }
 
 .playerPic {
@@ -24,24 +27,55 @@
   /* background-color: beige; */
 }
 
-.favorite-btn {
+.fav-btn {
+    /* background-color: #1f1a36;
+    color: #b3b8cd;
+    border: 1px solid #b3b8cd;
+    border-radius: 2px;
     position: absolute;
-    top: 0;
-    right: 15px;
-    background-color: #03bfcb;
-    color: white;
+    top: 8px;
+    right: 16px;
+    padding: 4px 12px; */
+    /* font-size: 0.8em; */
+    /* margin-top: 1.5em; */
+    /* position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: gold;
+    background: rgba(255,215,0,0.15); */
+    position: absolute;
+    top: 12px;
+    right: -36px;
+
+    width: 120px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: rotate(45deg);
+
+    background: rgba(255,255,255,0.10);
+    color: #b3b8cd;
+
     border: none;
-    padding: 8px 20px;
-    font-size: 1.2rem;
     cursor: pointer;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
+
+    font-size: 14px;
 }
 
-.favorite-btn:hover {
-    transform: translateY(2px);
-    background-color: #02a3ad;
+.fav-btn:hover {
+  background: rgba(255,255,255,0.15);
+  color: #ffd700;
+}
+
+.fav-btn.active {
+  background: rgba(255,255,255,0.15);
+  color: #ffd700;    
 }
 
 .stats {
@@ -60,7 +94,7 @@
 }
 
 .stat-value {
-    font-size: 2.0rem;
+    font-size: 1.6rem;
     font-weight: bold;
     /* color: #03bfcb; */
     margin-bottom: 5px;
