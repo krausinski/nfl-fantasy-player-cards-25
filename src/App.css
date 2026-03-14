@@ -36,3 +36,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.player-grid {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -9,7 +9,10 @@ const PlayerCard = ({ player, isFavorite, onToggleFavorite }) => {
             >
                 ★
             </button>
-            <img className="playerPic" src={`/players/${player.id}.png`} />
+            <img 
+                className={`player-pic ${player.position.toLowerCase()}`}
+                src={`/players/${player.id}.png`} 
+            />
             <h2>{player.name}</h2>
             <p style={{margin: 0}}>
                 {player.position} | {player.team}

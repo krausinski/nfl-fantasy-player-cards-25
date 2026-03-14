@@ -10,6 +10,7 @@
     max-width: 100%;
     text-align: center;
     overflow: hidden;
+    margin: 30px 20px;
 }
 
 .card h2 {
@@ -17,7 +18,7 @@
     font-size: 1.8rem;
 }
 
-.playerPic {
+.player-pic {
   width: 140px;
   height: 140px;
   object-fit: cover;
@@ -25,6 +26,22 @@
   border-radius: 50%;
   padding: 7px;
   /* background-color: beige; */
+}
+
+.player-pic.qb {
+    border-color: #03bfcb;
+}
+
+.player-pic.rb {
+    border-color: #F59E0B;
+}
+
+.player-pic.wr {
+    border-color: #A78BFA;
+}
+
+.player-pic.te {
+    border-color: #34D399;
 }
 
 .fav-btn {
