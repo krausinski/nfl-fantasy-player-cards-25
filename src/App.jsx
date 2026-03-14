@@ -6,10 +6,28 @@ import './App.css'
 import players from "./data/players.js"
 import PlayerCard from './components/PlayerCard'
 
+let renderCount = 0
+
 function App() {
   // const player = players[0]
 
   const [favorites, setFavorites] = useState([]);
+  const [filterFavorites, setFilterFavorites] = useState(false)
+
+  let playersFiltered = players;
+
+  if (filterFavorites) {
+    playersFiltered = players.filter(p => favorites.includes(p.id))
+  }
+  
+  renderCount += 1
+
+  console.log("=== START RENDER ===")
+  console.log("Render count: ", renderCount)
+  console.log("Players loaded: ", players.map(p => `${p.id} - ${p.name}`))
+  console.log("Players favorited: ", favorites)
+  console.log("Status filter button favorites: ", filterFavorites)
+  console.log("=== END RENDER ===")
 
   function toggleFavorite(id) {
     setFavorites(prev => {
@@ -25,10 +43,16 @@ function App() {
 
   return (
     <>
-      <div>
-        {/* <img src='/players/4.png' /> */}
+      <div
+        className="header"
+      >
         <h1>🏈 NFL Fantasy Player Cards 2025</h1>
-        {/* <p><b>🏆 Fantasy MVP 2023:</b> {players.find(p => p.fantasyFinishOverall === 1).name} ({players.find(p => p.fantasyFinishOverall === 1).team})</p> */}
+        <button 
+          className="btn-filter-fav"
+          onClick={() => setFilterFavorites(!filterFavorites)}
+        >
+          {filterFavorites ? "Show all" : "Show only favorites"}
+        </button>
       </div>
 
       <div 
@@ -44,7 +68,8 @@ function App() {
           onToggleFavorite={toggleFavorite}
         /> */}
 
-        {players.map((player) => (
+        {/* {players.map((player) => ( */}
+        {playersFiltered.map((player) => (  
           <PlayerCard 
             key={player.id}
             player={player}
