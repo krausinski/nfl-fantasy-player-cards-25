@@ -66,35 +66,41 @@ function App() {
         className="header"
       >
         <h1>🏈 NFL Fantasy Player Cards 2025</h1>
-        <button 
-          className="btn-filter-fav"
-          onClick={() => setFilterFavorites(!filterFavorites)}
-        >
-          {filterFavorites ? "Show all" : "Show only favorites"}
-        </button>
 
-        <div className='filter-panel-position'>
-          <h4>Position</h4>
-          {positions.map((pos, i) => (
-            <FilterPositionButton 
-              key={i}
-              posValue={pos}
-              onClickFilterPos={setFilterPosition}
-              isActive={pos === filterPosition}
-            />
-          ))}
-        </div>
+        <div className='controls'>
+          <div className='favorite-panel'>
+            <h4>Show favorites</h4>
+            <button 
+              className="btn-filter-fav"
+              onClick={() => setFilterFavorites(!filterFavorites)}
+            >
+              {filterFavorites ? "On" : "Off"}
+            </button>
+          </div>
 
-        <div className='sort-panel'>
-          <h4>Sort by...</h4>
-          {sortOptions.map((opt, i) => (
-            <SortOrderButton
-              key={i}
-              sortOrderVal={opt}
-              onClickSortOrder={setSortOrder}
-              isActive={opt === sortOrder}
-            />
-          ))}          
+          <div className='filter-panel-position'>
+            <h4>Position</h4>
+            {positions.map((pos, i) => (
+              <FilterPositionButton 
+                key={i}
+                posValue={pos}
+                onClickFilterPos={setFilterPosition}
+                isActive={pos === filterPosition}
+              />
+            ))}
+          </div>
+
+          <div className='sort-panel'>
+            <h4>Sort by...</h4>
+            {sortOptions.map((opt, i) => (
+              <SortOrderButton
+                key={i}
+                sortOrderVal={opt}
+                onClickSortOrder={setSortOrder}
+                isActive={opt === sortOrder}
+              />
+            ))}          
+          </div>
         </div>
       </div>
 
