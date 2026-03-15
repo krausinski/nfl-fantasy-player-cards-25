@@ -6,6 +6,7 @@ import './App.css'
 import players from "./data/players.js"
 import PlayerCard from './components/PlayerCard.jsx'
 import FilterPositionButton from './components/FilterPositionButton.jsx'
+import SortOrderButton from './components/SortOrderButton.jsx'
 
 let renderCount = 0
 
@@ -15,8 +16,10 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [filterFavorites, setFilterFavorites] = useState(false)
   const [filterPosition, setFilterPosition] = useState('all')
+  const [sortOrder, setSortOrder] = useState('alphabetical')
 
   const positions = ['all', 'qb', 'rb', 'wr', 'te']
+  const sortOptions = ['alphabetical', 'totalPoints', 'pointsPerGame']
 
   let playersOutput = players;
 
@@ -26,6 +29,14 @@ function App() {
   
   if (filterFavorites) {
     playersOutput = playersOutput.filter(p => favorites.includes(p.id))
+  }
+
+  if (sortOrder === 'totalPoints') {
+    playersOutput = playersOutput.toSorted((a,b) => b.fantasyPoints - a.fantasyPoints)
+  } else if (sortOrder === 'pointsPerGame') {
+    playersOutput = playersOutput.toSorted((a,b) => b.fantasyPpg - a.fantasyPpg)
+  } else {
+    playersOutput = playersOutput.toSorted((a,b) => a.name.split(" ")[1].localeCompare(b.name.split(" ")[1]))
   }
   
   renderCount += 1
@@ -61,6 +72,7 @@ function App() {
         >
           {filterFavorites ? "Show all" : "Show only favorites"}
         </button>
+
         <div className='filter-panel-position'>
           <h4>Position</h4>
           {positions.map((pos, i) => (
@@ -71,6 +83,18 @@ function App() {
               isActive={pos === filterPosition}
             />
           ))}
+        </div>
+
+        <div className='sort-panel'>
+          <h4>Sort by...</h4>
+          {sortOptions.map((opt, i) => (
+            <SortOrderButton
+              key={i}
+              sortOrderVal={opt}
+              onClickSortOrder={setSortOrder}
+              isActive={opt === sortOrder}
+            />
+          ))}          
         </div>
       </div>
 
