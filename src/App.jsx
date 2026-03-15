@@ -13,11 +13,16 @@ function App() {
 
   const [favorites, setFavorites] = useState([]);
   const [filterFavorites, setFilterFavorites] = useState(false)
+  const [filterPosition, setFilterPosition] = useState('all')
 
-  let playersFiltered = players;
+  let playersOutput = players;
 
+  if (filterPosition != 'all') {
+    playersOutput = players.filter(p => p.position.toLowerCase() === filterPosition)
+  }
+  
   if (filterFavorites) {
-    playersFiltered = players.filter(p => favorites.includes(p.id))
+    playersOutput = playersOutput.filter(p => favorites.includes(p.id))
   }
   
   renderCount += 1
@@ -53,6 +58,39 @@ function App() {
         >
           {filterFavorites ? "Show all" : "Show only favorites"}
         </button>
+        <div className='filter-panel-position'>
+          <h4>Position</h4>
+          <button
+            className='btn-filter-pos-all'
+            onClick={() => setFilterPosition('all')}
+          >
+            ALL
+          </button>
+          <button
+            className='btn-filter-pos-qb'
+            onClick={() => setFilterPosition('qb')}
+          >
+            QB
+          </button>
+          <button
+            className='btn-filter-pos-rb'
+            onClick={() => setFilterPosition('rb')}
+          >
+            RB
+          </button>
+          <button
+            className='btn-filter-pos-wr'
+            onClick={() => setFilterPosition('wr')}
+          >
+            WR
+          </button>
+          <button
+            className='btn-filter-pos-te'
+            onClick={() => setFilterPosition('te')}
+          >
+            TE
+          </button>
+        </div>
       </div>
 
       <div 
@@ -69,7 +107,7 @@ function App() {
         /> */}
 
         {/* {players.map((player) => ( */}
-        {playersFiltered.map((player) => (  
+        {playersOutput.map((player) => (  
           <PlayerCard 
             key={player.id}
             player={player}

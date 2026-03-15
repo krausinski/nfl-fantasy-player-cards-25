@@ -41,3 +41,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.filter-panel-position button {
+  margin: 0 4px;
+}
