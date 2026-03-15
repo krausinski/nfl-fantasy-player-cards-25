@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import players from "./data/players.js"
-import PlayerCard from './components/PlayerCard'
+import PlayerCard from './components/PlayerCard.jsx'
+import FilterPositionButton from './components/FilterPositionButton.jsx'
 
 let renderCount = 0
 
@@ -14,6 +15,8 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [filterFavorites, setFilterFavorites] = useState(false)
   const [filterPosition, setFilterPosition] = useState('all')
+
+  const positions = ['all', 'qb', 'rb', 'wr', 'te']
 
   let playersOutput = players;
 
@@ -60,36 +63,14 @@ function App() {
         </button>
         <div className='filter-panel-position'>
           <h4>Position</h4>
-          <button
-            className='btn-filter-pos-all'
-            onClick={() => setFilterPosition('all')}
-          >
-            ALL
-          </button>
-          <button
-            className='btn-filter-pos-qb'
-            onClick={() => setFilterPosition('qb')}
-          >
-            QB
-          </button>
-          <button
-            className='btn-filter-pos-rb'
-            onClick={() => setFilterPosition('rb')}
-          >
-            RB
-          </button>
-          <button
-            className='btn-filter-pos-wr'
-            onClick={() => setFilterPosition('wr')}
-          >
-            WR
-          </button>
-          <button
-            className='btn-filter-pos-te'
-            onClick={() => setFilterPosition('te')}
-          >
-            TE
-          </button>
+          {positions.map((pos, i) => (
+            <FilterPositionButton 
+              key={i}
+              posValue={pos}
+              onClickFilterPos={setFilterPosition}
+              isActive={pos === filterPosition}
+            />
+          ))}
         </div>
       </div>
 
@@ -100,13 +81,6 @@ function App() {
           justifyContent: "center"
         }}
       >
-        {/* <PlayerCard 
-          player={player} 
-          isFavorite={favorites.includes(player.id)}
-          onToggleFavorite={toggleFavorite}
-        /> */}
-
-        {/* {players.map((player) => ( */}
         {playersOutput.map((player) => (  
           <PlayerCard 
             key={player.id}

@@ -37,6 +37,14 @@
   color: #888;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #1f1a36;
+  padding: 20px;
+}
+
 .player-grid {
   display: flex;
   flex-wrap: wrap;
