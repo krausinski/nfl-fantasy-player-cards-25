@@ -61,6 +61,11 @@
   /* background-color: aqua; */
 }
 
+.controls button {
+  background-color: #39344d;
+  color: #b3b8cd;
+}
+
 .controls div {
   /* margin: 0 10px; */
 }

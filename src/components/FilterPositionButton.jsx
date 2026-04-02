@@ -3,7 +3,7 @@ const FilterPositionButton = ({ posValue, onClickFilterPos, isActive }) => {
         <button
             style={{
                 margin:4,
-                backgroundColor: isActive ? "#80d9f0" : "",
+                backgroundColor: isActive ? "#756f96" : "",
             }}
             onClick={() => onClickFilterPos(posValue)}
         >
