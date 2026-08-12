@@ -11,7 +11,7 @@ const PlayerCard = ({ player, isFavorite, onToggleFavorite }) => {
             </button>
             <img 
                 className={`player-pic ${player.position.toLowerCase()}`}
-                src={`/players/${player.id}.png`} 
+                src={`${import.meta.env.BASE_URL}players/${player.id}.png`} 
             />
             <h2>{player.name}</h2>
             <p style={{margin: 0}}>
